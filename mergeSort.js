@@ -156,31 +156,25 @@ function merge(leftArray, rightArray, array) {
     // Conditionally check whether the left value is less than the right value
     if (leftArray[leftIndex] < rightArray[rightIndex]) {
       // If so, the output is set to the left index on array
-      array[outputIndex] = leftArray[leftIndex];
+      array[outputIndex++] = leftArray[leftIndex++];
       // Increment
-      outputIndex++;
-      leftIndex++;
     } else {
       // Otherwise the output is set to the right index on array
-      array[outputIndex] = rightArray[rightIndex];
+      array[outputIndex++] = rightArray[rightIndex++];
       // Increment
-      outputIndex++;
-      rightArray++;
     }
   }
 
   // Loop over both left and right arrays
   // Left
-  for (let i = 0; i < leftArray.length; i++) {
+  for (let i = leftIndex; i < leftArray.length; i++) {
     // For every index in the array set the output index to the left array's index
-    array[outputIndex] = leftArray[i];
-    outputIndex++;
+    array[outputIndex++] = leftArray[i];
   }
 
   // Right
-  for (let i = 0; i < rightArray.length; i++) {
-    array[outputIndex] = rightArray[i];
-    outputIndex++;
+  for (let i = rightIndex; i < rightArray.length; i++) {
+    array[outputIndex++] = rightArray[i];
   }
 
   // Return array
