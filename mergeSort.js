@@ -1,3 +1,4 @@
+'use strict';
 /*
  * fn mergeSort()
  * Base case <= 1 return array
@@ -124,7 +125,11 @@ const array = [
   5
 ];
 
+let runCount = 0;
+
 function mSort(array) {
+  runCount++;
+
   // Base case
   if (array.length <= 1) {
     return array;
@@ -146,6 +151,7 @@ function mSort(array) {
 }
 
 function merge(leftArray, rightArray, array) {
+  runCount++;
   // Set indexes for left and right to track positions
   let leftIndex = 0;
   let rightIndex = 0;
@@ -153,6 +159,7 @@ function merge(leftArray, rightArray, array) {
 
   // Loop through the array while the left index is less than the left array's length and while the right index is less than the right array's length
   while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
+    runCount++;
     // Conditionally check whether the left value is less than the right value
     if (leftArray[leftIndex] < rightArray[rightIndex]) {
       // If so, the output is set to the left index on array
@@ -168,12 +175,14 @@ function merge(leftArray, rightArray, array) {
   // Loop over both left and right arrays
   // Left
   for (let i = leftIndex; i < leftArray.length; i++) {
+    runCount++;
     // For every index in the array set the output index to the left array's index
     array[outputIndex++] = leftArray[i];
   }
 
   // Right
   for (let i = rightIndex; i < rightArray.length; i++) {
+    runCount++;
     array[outputIndex++] = rightArray[i];
   }
 
@@ -182,3 +191,4 @@ function merge(leftArray, rightArray, array) {
 }
 
 console.log(mSort(array));
+console.log('this is our count:', runCount);
