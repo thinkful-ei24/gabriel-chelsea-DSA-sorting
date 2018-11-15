@@ -190,5 +190,9 @@ function merge(leftArray, rightArray, array) {
   return array;
 }
 
-console.log(mSort(array));
-console.log('this is our count:', runCount);
+if (require.main === module) {
+  console.log(mSort(array));
+  console.log('this is our count:', runCount);
+}
+console.log('merge sort', runCount);
+module.exports = mSort;
